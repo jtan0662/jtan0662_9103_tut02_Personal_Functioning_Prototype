@@ -36,6 +36,11 @@ let yellow;
 let blue;
 let red;
 let side;
+
+// Initial elevator position and Initial target position
+let elevatorY = 780;
+let targetY = 780;
+
 function setup() {
   createCanvas(900, 900);
   strokeWeight(1.5);
@@ -127,24 +132,6 @@ function draw() {
   // Conveyor belt behind the elevator on the right
   fill(173, 173, 170);
   rect(785, 0, 20, 900);
-
-  // Elevator control box
-  fill(173, 173, 170);
-  rect(760, 150, 70, 70);
-  fill(68, 104, 178);
-  rect(780, 170, 30, 30);
-
-  // Elevator doors
-  fill(68, 104, 178);
-  rect(750, 775, 45, 125);
-  rect(795, 775, 45, 125);
-
-  fill(darkgery);
-  rect(750, 540, 90, 20); // Elevator top
-  rect(750, 700, 90, 20); // Elevator bottom
-
-  fill(blue);
-  rect(750, 560, 90, 140); // Elevator box
 
   rect(580, 520, 120, 50); //sofa
   rect(590, 500, 100, 40);
@@ -293,4 +280,47 @@ function draw() {
     catX2 * 1.05,
     catY2 * 0.983
   ); //right ear
+
+  // Elevator movement
+  if (elevatorY < targetY) {
+    elevatorY += 5; // Move down
+  } else if (elevatorY > targetY) {
+    elevatorY -= 5; // Move up
+  }
+  
+  // Draw elevator components
+  // Elevator box
+  fill(blue);
+  rect(750, elevatorY, 90, 150); 
+  
+  fill(darkgery);
+  rect(750, elevatorY - 20, 90, 20); // Elevator top
+  rect(750, elevatorY + 150, 90, 20); // Elevator bottom
+
+  // Elevator control box
+  fill(173, 173, 170);
+  rect(760, elevatorY - 630, 70, 70);
+  fill(68, 104, 178);
+  rect(780, elevatorY - 610, 30, 30);
+
+  // Draw the elevator doors in a fixed position
+  fill(blue); 
+  rect(750, 780, 45, 120); // Left
+  rect(795, 780, 45, 120); // Right
+}
+
+// Key press controls for moving the elevator to specific floors
+function keyPressed() {
+  if (key === '0') {
+    targetY = 780; // Reset to default position
+  }
+  if (key === '1') {
+    targetY = 600; // Move to Floor 1
+  }
+  if (key === '2') {
+    targetY = 420; // Move to Floor 2
+  }
+  if (key === '3') {
+    targetY = 120; // Move to Floor 3
+  }
 }
