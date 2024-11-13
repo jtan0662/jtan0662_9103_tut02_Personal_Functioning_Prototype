@@ -30,11 +30,15 @@ class Pattern {
 }
 
 let leftY = 0;
-let grey;
+
+let lightgrey;
 let darkgery;
 let yellow;
 let blue;
 let red;
+let grey;
+let white;
+
 let side;
 
 // Initial elevator position and Initial target position
@@ -49,11 +53,13 @@ function setup() {
 
   yellow = color(236, 212, 42);
   blue = color(68, 104, 178);
-  grey = color(217, 218, 212);
+  lightgrey = color(217, 218, 212);
   red = color(165, 57, 45);
-  darkgery = (114, 113, 113);
+  darkgery = color(114, 113, 113);
+  grey = color(173, 173, 170);
+  white = color(250, 250, 240);
 
-  let colors = [yellow, blue, grey, red];
+  let colors = [yellow, blue, lightgrey, red];
   let yPositions = [105, 285, 405, 585, 765];
   let xPositions = [105, 225, 735, 855];
   let pattern = new Pattern(side, colors);
@@ -64,7 +70,7 @@ function setup() {
 
 function draw() {
   // Horizontal conveyor belt, the third row
-  fill(grey);
+  fill(lightgrey);
   rect(0, 300, 900, 90);
 
   // Two parcel storage doors
@@ -75,7 +81,7 @@ function draw() {
     rect(840, 300, 30, 90);
 
   // Left parcel passageway
-  fill(grey);
+  fill(lightgrey);
   rect(120, 0, 90, 900);
 
   // Building Columns
@@ -97,7 +103,7 @@ function draw() {
   rect(120, 820, 90, 20);
 
   // Package colors
-  fill(240, 210, 10);
+  fill(yellow);
   // Package 1
   rect(130, 175, 75, 65);
   rect(170, 140, 40, 35);
@@ -107,7 +113,7 @@ function draw() {
   rect(125, 750, 80, 70);
 
   // Package label
-  fill(250, 250, 240);
+  fill(white);
   rect(170, 185, 30, 22); // 1
   rect(192, 145, 14, 10); // 1
   rect(135, 445, 40, 30); // 2
@@ -117,25 +123,22 @@ function draw() {
   pop();
 
   // Package 4 inside horizontal conveyor belt
-  fill(240, 210, 10);
+  fill(yellow);
   rect(380, 310, 110, 80);
-  fill(250, 250, 240);
+  fill(white);
   rect(410, 330, 40, 26); // 4
-  // Tape on the second package
-  fill(221, 195, 140);
-  //rect(182, 400, 18, 90);
 
   // Right elevator passageway
-  fill(grey);
+  fill(lightgrey);
   rect(750, 0, 90, 900);
 
   // Conveyor belt behind the elevator on the right
-  fill(173, 173, 170);
+  fill(grey);
   rect(785, 0, 20, 900);
 
   rect(580, 520, 120, 50); //sofa
   rect(590, 500, 100, 40);
-  fill(grey);
+  fill(lightgrey);
   rect(665, 512, 28, 28); //pillow
   rect(625, 520, 35, 20);
 
@@ -158,7 +161,7 @@ function draw() {
   //artwork
   fill(darkgery);
   rect(300, 630, 38, 48); // frame
-  fill(grey);
+  fill(lightgrey);
   rect(304, 635, 30, 38); //canvas
   fill(yellow);
   rect(310, 640, 24, 25); //content
@@ -192,7 +195,7 @@ function draw() {
 
   // Draw colors for the person
   let headColor = color(255, 224, 189); // Head color
-  let packageColor = color(240, 210, 10); // Package color
+  let packageColor = color(yellow); // Package color
   let catColor = color(0, 0, 0); // Cat color
 
   // Define the person1's position
@@ -219,7 +222,7 @@ function draw() {
   rect(personX + 3, personY + side + 5, side / 1.2, side);
 
   // Package label p4hold
-  fill(250, 250, 240);
+  fill(white);
   rect(personX + 8, personY + side + 10, side / 3, side / 5);
 
   // Define the person3's position
@@ -298,9 +301,9 @@ function draw() {
   rect(750, elevatorY + 150, 90, 20); // Elevator bottom
 
   // Elevator control box
-  fill(173, 173, 170);
+  fill(grey);
   rect(760, elevatorY - 630, 70, 70);
-  fill(68, 104, 178);
+  fill(blue);
   rect(780, elevatorY - 610, 30, 30);
 
   // Draw the elevator doors in a fixed position
